@@ -1,10 +1,10 @@
-export const FeedbackOptions = ({ GoodIncr, NeutralIncr, BadIncr }) => {
+export const FeedbackOptions = ({ goodIncr, neutralIncr, badIncr }) => {
   return (
     <div>
-      <h1>Please leave feedbaak</h1>
-      <button onClick={GoodIncr}>Good</button>
-      <button onClick={NeutralIncr}>Neutral</button>
-      <button onClick={() => BadIncr()}>Bad</button>
+      <h1>Please leave feedback</h1>
+      <button onClick={goodIncr}>Good</button>
+      <button onClick={neutralIncr}>Neutral</button>
+      <button onClick={badIncr}>Bad</button>
     </div>
   );
 };
