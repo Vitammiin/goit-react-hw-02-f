@@ -11,7 +11,7 @@ export class App extends Component {
     bad: 0,
     total: 0,
     feedback: 0,
-  };
+  };}
 
   GoodIncr = GoodIncr => {
     this.setState(prevState => {
