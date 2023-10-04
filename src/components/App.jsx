@@ -1,7 +1,7 @@
-import React, { Component } from 'react'; // Импортируем React и Component из библиотеки react
+import React, { Component } from 'react';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
-
+import Section from './Section';
 export class App extends Component {
   state = {
     good: 0,
@@ -9,22 +9,9 @@ export class App extends Component {
     bad: 0,
   };
 
-  // Используем camelCase для названий методов
-  goodIncr = () => {
+  onLeaveFeedback = name => {
     this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-
-  neutralIncr = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-
-  badIncr = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
+      [name]: prevState[name] + 1,
     }));
   };
 
@@ -46,20 +33,24 @@ export class App extends Component {
   };
 
   render() {
+    const options = ['good', 'neutral', 'bad'];
+
     return (
       <>
-        <FeedbackOptions
-          goodIncr={this.goodIncr}
-          neutralIncr={this.neutralIncr}
-          badIncr={this.badIncr}
-        />
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        />
+        <Section title="Please leave feedback">
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
+        </Section>
       </>
     );
   }

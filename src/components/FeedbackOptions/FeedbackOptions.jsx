@@ -1,10 +1,11 @@
-export const FeedbackOptions = ({ goodIncr, neutralIncr, badIncr }) => {
+export const FeedbackOptions = ({ onLeaveFeedback }) => {
   return (
     <div>
-      <h1>Please leave feedback</h1>
-      <button onClick={goodIncr}>Good</button>
-      <button onClick={neutralIncr}>Neutral</button>
-      <button onClick={badIncr}>Bad</button>
+      {options.map(name => (
+        <button key={name} onClick={() => onLeaveFeedback(name)}>
+          {name}
+        </button>
+      ))}
     </div>
   );
 };
